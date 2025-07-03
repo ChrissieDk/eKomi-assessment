@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+  <Id>00000000-0000-0000-0000-000000000000</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Christiaan de Kock</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Contact Enrichment Add-in" />
+  <Description DefaultValue="Displays additional contact information for email senders." />
+  <IconUrl DefaultValue="https://via.placeholder.com/32" />
+  <HighResolutionIconUrl DefaultValue="https://via.placeholder.com/64" />
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Mailbox" />
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:3000/" />
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+  </Rule>
+</OfficeApp> 
