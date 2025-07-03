@@ -66,7 +66,17 @@ if (localStorage.getItem('jwt')) {
   showLoginSection();
 }
 
+let contactVisible = false;
+
 fetchContactBtn.addEventListener('click', async () => {
+  if (contactVisible) {
+    contactInfo.innerHTML = '';
+    contactError.textContent = '';
+    fetchContactBtn.textContent = 'Show Contact Info';
+    contactVisible = false;
+    return;
+  }
+
   contactInfo.textContent = '';
   contactError.textContent = '';
 
@@ -88,11 +98,15 @@ fetchContactBtn.addEventListener('click', async () => {
 
     if (res.ok) {
       contactInfo.innerHTML = `
-        <strong>Name:</strong> ${data.full_name}<br>
-        <strong>Department:</strong> ${data.department}<br>
-        <strong>Phone:</strong> ${data.phone}<br>
-        <strong>Job Title:</strong> ${data.job_title}
+        <div class="contact-card">
+          <div class="contact-row"><span class="label">Name:</span> <span>${data.full_name}</span></div>
+          <div class="contact-row"><span class="label">Department:</span> <span>${data.department}</span></div>
+          <div class="contact-row"><span class="label">Phone:</span> <span>${data.phone}</span></div>
+          <div class="contact-row"><span class="label">Job Title:</span> <span>${data.job_title}</span></div>
+        </div>
       `;
+      fetchContactBtn.textContent = 'Hide Contact Info';
+      contactVisible = true;
     } else {
       contactError.textContent = data.message || 'Failed to fetch contact info';
     }
