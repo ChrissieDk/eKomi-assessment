@@ -222,3 +222,9 @@ docker-compose up --build
 
 
 **If you have any issues running the project, please don't hesitate to contact me directly.**
+
+**Important Notes for Reviewers and Users:**
+
+1. The volume mapping for `database.sqlite` has been removed from `docker-compose.yml`. This prevents Docker from accidentally creating a directory instead of a file, which would cause the backend to fail to start.
+2. The backend will automatically create the `database.sqlite` file inside the container on first run. **Do not manually create a file or folder named `database.sqlite` in the backend directory.**
+3. The database table creation code in `db.js` is intentionally left uncommented. This ensures that the required tables are created automatically when the backend starts for the first time.
