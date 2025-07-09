@@ -33,6 +33,7 @@ This project is a simulated Outlook add-in that enriches the email reading exper
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (includes Docker Compose)
 - (Optional) [DB Browser for SQLite](https://sqlitebrowser.org/) for viewing the database
+- Make sure Docker Desktop is installed and running before proceeding.
 
 ---
 
@@ -56,6 +57,7 @@ JWT_SECRET=your_super_secret_key
 > **Note:**  
 > This secret is required for authentication to work.  
 > If you do not set it, the backend will use a default value (`secret`), but for security and consistency, always set your own.
+> The .env file must be in the root of the project (the same folder as docker-compose.yml), not inside the backend folder.
 
 ### 3. **Build and Run with Docker Compose**
 
@@ -138,6 +140,29 @@ docker-compose up --build
 
 ---
 
+## Common Issues
+
+- **Docker Desktop is not running:**
+  - Make sure Docker Desktop is installed and running before you run any Docker commands.
+
+- **.env file missing or in the wrong place:**
+  - The `.env` file (with `JWT_SECRET=...`) must be in the root of the project, in the same folder as `docker-compose.yml`, not inside the `backend` folder.
+
+- **Ports already in use:**
+  - If you get an error about ports 3000 or 4000 being in use, stop any other applications using those ports and try again.
+
+- **Old or incompatible Docker version:**
+  - Make sure you are using a recent version of Docker Desktop and Docker Compose.
+
+- **Containers take a few seconds to start:**
+  - After running `docker-compose up --build`, wait a few seconds for both the backend and frontend to start before accessing them in your browser.
+
+- **File permissions or antivirus issues:**
+  - On some systems, file permissions or antivirus software can interfere with Docker. Try running Docker Desktop as administrator or check your security software if you encounter issues.
+
+
+---
+
 ## Troubleshooting
 
 - **Backend fails with `invalid ELF header`:**
@@ -149,6 +174,8 @@ docker-compose up --build
   - Both must be running via Docker Compose for networking to work.
 - **Database not persisting:**  
   - The `database.sqlite` file is mounted as a volume in Docker Compose for persistence.
+- **Ports already in use:**  
+  - If you get an error about ports 3000 or 4000 being in use, stop any other applications using those ports and try again.
 
 ---
 
