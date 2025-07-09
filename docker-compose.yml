@@ -5,8 +5,6 @@ services:
     build: ./backend
     ports:
       - "4000:4000"
-    volumes:
-      - ./backend/database.sqlite:/app/database.sqlite
     environment:
       - NODE_ENV=production
       - PORT=4000

@@ -14,14 +14,14 @@ app.use(express.json());
 
 // --- Used to create sample contacts ---
 // Example: Uncomment and restart server to add sample contacts for testing
-// db.run(
-//   'INSERT OR IGNORE INTO contacts (email, full_name, department, phone, job_title) VALUES (?, ?, ?, ?, ?)',
-//   ['sender@example.com', 'Alice Smith', 'Sales', '123-456-7890', 'Sales Manager']
-// );
-// db.run(
-//   'INSERT OR IGNORE INTO contacts (email, full_name, department, phone, job_title) VALUES (?, ?, ?, ?, ?)',
-//   ['boss@company.com', 'Bob Boss', 'Management', '555-555-5555', 'CEO']
-// );
+db.run(
+  'INSERT OR IGNORE INTO contacts (email, full_name, department, phone, job_title) VALUES (?, ?, ?, ?, ?)',
+  ['sender@example.com', 'Alice Smith', 'Sales', '123-456-7890', 'Sales Manager']
+);
+db.run(
+  'INSERT OR IGNORE INTO contacts (email, full_name, department, phone, job_title) VALUES (?, ?, ?, ?, ?)',
+  ['boss@company.com', 'Bob Boss', 'Management', '555-555-5555', 'CEO']
+);
 // ---------------------------------------------------------------
 
 function authenticateToken(req, res, next) {
